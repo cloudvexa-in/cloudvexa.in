@@ -1,18 +1,16 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import Button from '@/components/ui/Button'
+import { motion } from 'framer-motion'
 import {
-    Zap,
-    Shield,
-    Rocket,
-    Users,
-    Award,
-    TrendingUp,
     ArrowRight,
-    CheckCircle2
+    CheckCircle2,
+    Rocket,
+    Shield,
+    Users,
+    Zap
 } from 'lucide-react'
+import dynamic from 'next/dynamic'
 
 // Dynamically import 3D component to avoid SSR issues
 const CloudNetwork = dynamic(() => import('@/components/3d/CloudNetwork'), {
@@ -41,13 +39,6 @@ const features = [
         title: 'Expert Team',
         description: '100+ skilled professionals at your service',
     },
-]
-
-const stats = [
-    { value: '500+', label: 'Projects Delivered' },
-    { value: '200+', label: 'Happy Clients' },
-    { value: '100+', label: 'Team Members' },
-    { value: '99%', label: 'Client Satisfaction' },
 ]
 
 const benefits = [
@@ -169,31 +160,6 @@ export default function HomePage() {
                                 </motion.div>
                             )
                         })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="section-padding">
-                <div className="container-custom">
-                    <div className="glass rounded-3xl p-12">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={stat.label}
-                                    className="text-center"
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1, type: 'spring' }}
-                                >
-                                    <div className="text-4xl md:text-5xl font-black gradient-text mb-2">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-sm opacity-80">{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </section>
