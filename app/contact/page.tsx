@@ -15,13 +15,13 @@ const contactInfo = [
     {
         icon: Phone,
         title: 'Call Us',
-        value: '+91 123 456 7890',
-        link: 'tel:+94384',
+        value: '+91 9438466231',
+        link: 'tel:+91 9438466231',
     },
     {
         icon: MapPin,
         title: 'Visit Us',
-        value: 'Oxford Tower, HAL Old Airport Rd, Kodihalli, Bengaluru, Karnataka 560008',
+        value: 'Unit 101, Oxford Towers, 139/88, Hal Old Airport, H.a.l Ii Stage, Bangalore, Bangalore North, Karnataka, India, 560008',
         link: 'https://share.google/DbHRv7ULI1A9OaDhR',
         type: '_blank'
     },

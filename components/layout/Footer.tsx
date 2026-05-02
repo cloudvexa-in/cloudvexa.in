@@ -1,17 +1,17 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
     Facebook,
-    Twitter,
-    Linkedin,
     Instagram,
-    Youtube,
+    Linkedin,
     Mail,
+    MapPin,
     Phone,
-    MapPin
+    Twitter,
+    Youtube
 } from 'lucide-react'
+import Link from 'next/link'
 
 const footerLinks = {
     company: [
@@ -65,19 +65,19 @@ export default function Footer() {
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
                                 <Mail size={16} className="text-neon-cyan" />
-                                <a href="mailto:info@cloudvexa.in" className="hover:text-neon-cyan transition-colors">
-                                    info@cloudvexa.in
+                                <a href="mailto:support@cloudvexa.in" className="hover:text-neon-cyan transition-colors">
+                                    support@cloudvexa.in
                                 </a>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
                                 <Phone size={16} className="text-neon-cyan" />
-                                <a href="tel:+911234567890" className="hover:text-neon-cyan transition-colors">
-                                    +91 123 456 7890
+                                <a href="tel:+919438466231" className="hover:text-neon-cyan transition-colors">
+                                    +91 9438466231
                                 </a>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
                                 <MapPin size={16} className="text-neon-cyan" />
-                                <span className="opacity-80">India</span>
+                                <span className="opacity-80">Unit 101, Oxford Towers, 139/88, Hal Old Airport, H.a.l Ii Stage, Bangalore, Bangalore North, Karnataka, India, 560008</span>
                             </div>
                         </div>
                     </div>
