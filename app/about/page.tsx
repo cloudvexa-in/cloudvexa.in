@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Timeline3D from '@/components/3d/Timeline3D'
-import { Target, Eye, Heart, Award } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Award, Eye, Heart, Target } from 'lucide-react'
 
 const values = [
     {
@@ -195,19 +195,19 @@ export default function AboutPage() {
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                             <div>
-                                <div className="text-3xl font-bold gradient-text">50+</div>
+                                <div className="text-3xl font-bold gradient-text">15+</div>
                                 <div className="text-sm opacity-70">Developers</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold gradient-text">20+</div>
+                                <div className="text-3xl font-bold gradient-text">5+</div>
                                 <div className="text-sm opacity-70">Designers</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold gradient-text">15+</div>
+                                <div className="text-3xl font-bold gradient-text">10+</div>
                                 <div className="text-sm opacity-70">QA Engineers</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold gradient-text">15+</div>
+                                <div className="text-3xl font-bold gradient-text">5+</div>
                                 <div className="text-sm opacity-70">Consultants</div>
                             </div>
                         </div>

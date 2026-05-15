@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import JobCard from '@/components/features/JobCard'
-import { X, Send, Briefcase } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Briefcase, Send, X } from 'lucide-react'
+import { useState } from 'react'
 
 const departments = ['All', 'Engineering', 'Design', 'QA', 'Sales', 'Marketing']
-const locations = ['All', 'Remote', 'Bangalore', 'Mumbai', 'Hyderabad']
+const locations = ['All', 'Remote', 'Bangalore', 'Bhubaneswar']
 const types = ['All', 'Full-time', 'Part-time', 'Contract']
 
 const jobs = [
@@ -27,14 +27,14 @@ const jobs = [
     {
         title: 'QA Automation Engineer',
         department: 'QA',
-        location: 'Mumbai',
+        location: 'Bhubaneswar',
         type: 'Full-time',
         description: 'Help us maintain the highest quality standards by developing and executing automated test suites. Experience with Selenium, Cypress, or similar tools preferred.',
     },
     {
         title: 'AI/ML Engineer',
         department: 'Engineering',
-        location: 'Hyderabad',
+        location: 'Bangalore',
         type: 'Full-time',
         description: 'Work on exciting AI projects involving machine learning, natural language processing, and computer vision. Strong Python and TensorFlow/PyTorch skills required.',
     },

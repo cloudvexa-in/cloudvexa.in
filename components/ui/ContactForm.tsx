@@ -18,12 +18,33 @@ export default function ContactForm() {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 2000))
+        try {
+            // Using Web3Forms as an example (no backend needed)
+            // Get your free access key from https://web3forms.com/
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+                    ...formData
+                }),
+            });
 
-        alert('Thank you! We will get back to you soon.')
-        setFormData({ name: '', email: '', phone: '', company: '', message: '' })
-        setIsSubmitting(false)
+            const result = await response.json();
+            if (result.success) {
+                alert('Thank you! We will get back to you soon.')
+                setFormData({ name: '', email: '', phone: '', company: '', message: '' })
+            } else {
+                alert('Something went wrong. Please try again.')
+            }
+        } catch (error) {
+            alert('Error sending message.')
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

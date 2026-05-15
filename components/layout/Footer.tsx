@@ -26,6 +26,7 @@ const footerLinks = {
         { name: 'QA & Testing', href: '/products#qa' },
         { name: 'AI Solutions', href: '/products#ai' },
         { name: 'Network Security', href: '/products#security' },
+        { name: 'Search Engine Optimization (SEO)', href: '/products#seo' },
     ],
     support: [
         { name: 'Contact Us', href: '/contact' },

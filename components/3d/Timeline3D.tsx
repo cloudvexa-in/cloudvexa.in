@@ -1,31 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, TrendingUp, Award, Users } from 'lucide-react'
+import { Calendar, TrendingUp, Users } from 'lucide-react'
 
 const milestones = [
     {
-        year: '2018',
+        year: '2026',
         title: 'Company Founded',
         description: 'Started with a vision to transform digital solutions',
         icon: Calendar,
     },
     {
-        year: '2019',
+        year: '2026',
         title: 'First Major Client',
         description: 'Secured enterprise partnership and expanded team',
         icon: Users,
     },
+
     {
-        year: '2021',
-        title: 'Industry Recognition',
-        description: 'Awarded Best Tech Startup of the Year',
-        icon: Award,
-    },
-    {
-        year: '2023',
-        title: 'Global Expansion',
-        description: 'Opened offices in 5 countries, 100+ team members',
+        year: '2026',
+        title: ' Expansion',
+        description: 'Opened offices in 2 states, 30+ team members',
         icon: TrendingUp,
     },
 ]

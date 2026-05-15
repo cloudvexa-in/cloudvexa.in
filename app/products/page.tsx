@@ -9,7 +9,8 @@ import {
     TestTube,
     Brain,
     Shield,
-    ArrowRight
+    ArrowRight,
+    Search
 } from 'lucide-react'
 import Button from '@/components/ui/Button'
 
@@ -67,6 +68,17 @@ const services = [
             'Penetration testing',
             'Network infrastructure security',
             'Compliance & risk management',
+        ],
+    },
+    {
+        icon: Search,
+        title: 'Search Engine Optimization (SEO)',
+        description: 'Data-driven SEO strategies to improve your search rankings, increase organic traffic, and boost your online visibility.',
+        features: [
+            'On-page & off-page optimization',
+            'Technical SEO audits',
+            'Keyword research & strategy',
+            'Performance tracking & reporting',
         ],
     },
 ]
