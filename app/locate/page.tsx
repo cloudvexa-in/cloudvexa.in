@@ -1,27 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MapPin, Phone, Mail, Navigation } from 'lucide-react'
+import { Mail, MapPin, Navigation, Phone } from 'lucide-react'
 
 const offices = [
     {
         city: 'Bangalore',
-        address: 'Tech Park, Whitefield, Bangalore, Karnataka 560066',
-        phone: '+91 123 456 7890',
-        email: 'bangalore@cloudvexa.in',
-    },
-    {
-        city: 'Mumbai',
-        address: 'Business District, Bandra Kurla Complex, Mumbai, Maharashtra 400051',
-        phone: '+91 123 456 7891',
-        email: 'mumbai@cloudvexa.in',
-    },
-    {
-        city: 'Hyderabad',
-        address: 'HITEC City, Madhapur, Hyderabad, Telangana 500081',
-        phone: '+91 123 456 7892',
-        email: 'hyderabad@cloudvexa.in',
-    },
+        address: 'Unit 101, Oxford Towers, 139/88, Hal Old Airport, H.a.l Ii Stage, Bangalore, Bangalore North, Karnataka, India, 560008',
+        phone: '+91 9438466231',
+        email: 'support@cloudvexa.in',
+        mapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Unit+101+Oxford+Towers+139%2F88+HAL+Old+Airport+Road+Bangalore+560008',
+    }
 ]
 
 export default function LocatePage() {
@@ -143,13 +132,16 @@ export default function LocatePage() {
                                     </div>
                                 </div>
 
-                                <motion.button
-                                    className="w-full mt-6 py-3 rounded-lg glass border border-neon-cyan text-neon-cyan font-semibold hover:bg-neon-cyan hover:text-deep-blue-300 transition-all duration-300"
+                                <motion.a
+                                    href={office.mapsUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-full mt-6 py-3 rounded-lg glass border border-neon-cyan text-neon-cyan font-semibold hover:bg-neon-cyan hover:text-deep-blue-300 transition-all duration-300 flex items-center justify-center"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
                                     Get Directions
-                                </motion.button>
+                                </motion.a>
                             </motion.div>
                         ))}
                     </div>
