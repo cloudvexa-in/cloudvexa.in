@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { name: "About Us", href: "/about" },
   { name: "Products & Services", href: "/products" },
-  { name: "News", href: "/news" },
+  // { name: "News", href: "/news" }, TODO will add when we have a actual backend
   { name: "Career", href: "/career" },
   { name: "Contact Us", href: "/contact" },
   { name: "Locate Us", href: "/locate" },
