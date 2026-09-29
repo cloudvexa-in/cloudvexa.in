@@ -5,6 +5,47 @@
 @tailwind utilities;
 
 /* ============================================
+   CLOUDVEXA RE-ARCHITECTURE — DESIGN TOKENS
+   Inspired by: GitHub Dark + Antigravity.google
+   ============================================ */
+
+:root {
+  /* === Cloudvexa Surface System === */
+  --cv-black: #05070E;
+  --cv-subtle: #0B0F19;
+  --cv-card: rgba(15, 23, 42, 0.65);
+  --cv-card-hover: rgba(22, 33, 62, 0.80);
+  --cv-glass: rgba(255, 255, 255, 0.03);
+
+  /* === Borders & Dividers === */
+  --cv-border-subtle: rgba(255, 255, 255, 0.08);
+  --cv-border-mid: rgba(255, 255, 255, 0.12);
+  --cv-border-bright: rgba(0, 240, 255, 0.35);
+
+  /* === Neon Brand Accents === */
+  --neon-cyan: #00F0FF;
+  --neon-blue: #0070F3;
+  --neon-violet: #8A2BE2;
+  --neon-purple: #7928CA;
+
+  /* === Glow Shadows === */
+  --glow-cyan: 0 0 40px rgba(0, 240, 255, 0.3);
+  --glow-blue: 0 0 40px rgba(0, 112, 243, 0.3);
+  --glow-violet: 0 0 40px rgba(122, 40, 202, 0.3);
+
+  /* === Typography === */
+  --font-sans: 'Geist', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+
+  /* === Spacing === */
+  --page-margin: clamp(1rem, 5vw, 6rem);
+
+  /* === Animation Easings === */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
    CSS CUSTOM PROPERTIES - THEME SYSTEM
    ============================================ */
 
@@ -517,3 +558,60 @@ textarea::placeholder {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
+
+/* ============================================
+   CLOUDVEXA RE-ARCHITECTURE — UTILITIES
+   ============================================ */
+
+/* Dot grid pattern overlay */
+.grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* CV glassmorphic card */
+.cv-glass-card {
+  background: var(--cv-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cv-border-subtle);
+  border-radius: 16px;
+}
+
+/* CV neon border */
+.cv-neon-border {
+  border: 1px solid var(--cv-border-bright);
+  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05), 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+/* CV gradient text */
+.cv-gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #94A3B8 50%, #00F0FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section padding utility */
+.cv-section {
+  padding: clamp(4rem, 10vw, 8rem) var(--page-margin);
+}
+
+/* Spinner animation for form buttons */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Mobile responsive: collapse grids */
+@media (max-width: 768px) {
+  .bento-grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
+  .footer-grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
+}

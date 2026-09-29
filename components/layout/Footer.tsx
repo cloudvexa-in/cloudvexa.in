@@ -1,51 +1,42 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
-import Link from "next/link";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Zap, Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const footerLinks = {
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Our Team", href: "/about#team" },
-    { name: "Careers", href: "/career" },
-    { name: "News", href: "/news" },
+  Company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Team', href: '/about#team' },
+    { label: 'Careers', href: '/career' },
+    { label: 'News', href: '/news' },
   ],
-  services: [
-    { name: "Software Development", href: "/products#software" },
-    { name: "Web Development", href: "/products#web" },
-    { name: "QA & Testing", href: "/products#qa" },
-    { name: "AI Solutions", href: "/products#ai" },
-    { name: "Network Security", href: "/products#security" },
-    { name: "Search Engine Optimization (SEO)", href: "/products#seo" },
+  Services: [
+    { label: 'Software Development', href: '/products#software' },
+    { label: 'Web Development', href: '/products#web' },
+    { label: 'QA & Testing', href: '/products#qa' },
+    { label: 'AI Solutions', href: '/products#ai' },
+    { label: 'Network Security', href: '/products#security' },
+    { label: 'Search Engine Optimization', href: '/products#seo' },
   ],
-  support: [
-    { name: "Contact Us", href: "/contact" },
-    { name: "Locate Us", href: "/locate" },
-    // { name: "Documentation", href: "#" }, // TODO need to add the components first
-    { name: "FAQ", href: "/contact#faq" },
+  Support: [
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Locate Us', href: '/locate' },
+    { label: 'FAQ', href: '/contact#faq' },
   ],
 };
 
-const socialLinks = [
+const actualSocialLinks = [
   {
     name: "Facebook",
     icon: Facebook,
     href: "https://www.facebook.com/people/Cloudvexain/61590050627490/",
     color: "#1877F2",
   },
-  // { name: "Twitter", icon: Twitter, href: "#", color: "#1DA1F2" },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: " https://www.linkedin.com/company/cloudvexa-private-limited",
+    href: "https://www.linkedin.com/company/cloudvexa-private-limited",
     color: "#0A66C2",
   },
   {
@@ -54,167 +45,251 @@ const socialLinks = [
     href: "https://www.instagram.com/cloud_vexa/",
     color: "#E4405F",
   },
-  // { name: "YouTube", icon: Youtube, href: "#", color: "#FF0000" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="glass border-t border-white/10 mt-20">
-      <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <motion.div
-              className="text-3xl font-black gradient-text mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
-              Cloudvexa
-            </motion.div>
-            <p className="text-sm mb-6 opacity-80">
-              Building Intelligent, Secure & Scalable Digital Solutions for the
-              future. Transforming businesses through innovative technology.
-            </p>
+    <footer
+      style={{
+        background: 'var(--bg-subtle)',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        padding: 'clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem) 2rem',
+        color: '#fff',
+      }}
+    >
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
+        {/* Newsletter / Stay Updated Block */}
+        <div style={{
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '16px',
+          padding: '2rem',
+          marginBottom: '3rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1.5rem',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+            <div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>Stay Updated</h3>
+                <p style={{ fontSize: '0.875rem', color: 'rgba(148,163,184,0.8)' }}>Subscribe to our newsletter for the latest updates.</p>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    style={{
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        color: '#fff',
+                        outline: 'none',
+                        minWidth: '250px'
+                    }}
+                />
+                <button style={{
+                    padding: '12px 24px',
+                    borderRadius: '8px',
+                    background: '#00F0FF',
+                    color: '#000',
+                    fontWeight: 600,
+                    border: 'none',
+                    cursor: 'pointer'
+                }}>
+                    Subscribe
+                </button>
+            </div>
+        </div>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm">
-                <Mail size={16} className="text-neon-cyan" />
-                <a
-                  href="mailto:support@cloudvexa.in"
-                  className="hover:text-neon-cyan transition-colors"
-                  target="_blank"
-                >
-                  support@cloudvexa.in
-                </a>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '3rem',
+            marginBottom: '3rem',
+          }}
+        >
+          {/* Brand column */}
+          <div style={{ gridColumn: 'span 2' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '1.5rem',
+              }}
+            >
+              <div
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  background: 'linear-gradient(135deg, #00F0FF, #0070F3)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Zap size={18} color="#fff" />
               </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Phone size={16} className="text-neon-cyan" />
-                <a
-                  href="tel:+919438466231"
-                  className="hover:text-neon-cyan transition-colors"
-                  target="_blank"
-                >
-                  +91 9438466231
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <MapPin size={16} className="text-neon-cyan" />
-                <span className="opacity-80">
-                  Unit 101, Oxford Towers, 139/88, Hal Old Airport, H.a.l Ii
-                  Stage, Bangalore, Bangalore North, Karnataka, India, 560008
-                </span>
-              </div>
+              <span
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: 800,
+                  background: 'linear-gradient(90deg, #fff, #00F0FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Cloudvexa
+              </span>
+            </div>
+            <p
+              style={{
+                fontSize: '0.85rem',
+                color: 'rgba(148,163,184,0.8)',
+                lineHeight: 1.7,
+                maxWidth: '320px',
+                marginBottom: '1.5rem',
+              }}
+            >
+              Building Intelligent, Secure & Scalable Digital Solutions for the future.
+              Transforming businesses through innovative technology.
+            </p>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem' }}>
+                    <Mail size={16} color="#00F0FF" style={{ flexShrink: 0 }} />
+                    <a href="mailto:support@cloudvexa.in" style={{ color: 'rgba(148,163,184,0.8)', textDecoration: 'none' }}>support@cloudvexa.in</a>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem' }}>
+                    <Phone size={16} color="#00F0FF" style={{ flexShrink: 0 }} />
+                    <a href="tel:+919438466231" style={{ color: 'rgba(148,163,184,0.8)', textDecoration: 'none' }}>+91 9438466231</a>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.875rem' }}>
+                    <MapPin size={16} color="#00F0FF" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <span style={{ color: 'rgba(148,163,184,0.8)', lineHeight: 1.5 }}>
+                        Unit 101, Oxford Towers, 139/88, Hal Old Airport, H.a.l Ii Stage, Bangalore, Bangalore North, Karnataka, India, 560008
+                    </span>
+                </div>
             </div>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-neon-cyan transition-all duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-4">Services</h4>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-neon-cyan transition-all duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-4">Support</h4>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-neon-cyan transition-all duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Link columns */}
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category}>
+              <h4
+                style={{
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  color: '#fff',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                {category}
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {links.map((link) => (
+                  <li key={link.label} style={{ marginBottom: '0.75rem' }}>
+                    <Link
+                      href={link.href}
+                      style={{
+                        fontSize: '0.875rem',
+                        color: 'rgba(148,163,184,0.8)',
+                        textDecoration: 'none',
+                        transition: 'color 200ms ease',
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = '#00F0FF')
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = 'rgba(148,163,184,0.8)')
+                      }
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Newsletter */}
-        {/* TODO: need to add be first */}
-        {/* <div className="glass rounded-2xl p-8 mb-12">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div>
-                            <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-                            <p className="text-sm opacity-80">Subscribe to our newsletter for the latest updates</p>
-                        </div>
-                        <div className="flex gap-2 w-full md:w-auto">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="flex-1 md:w-64 px-4 py-3 rounded-lg glass border border-white/20 focus:border-neon-cyan transition-all"
-                            />
-                            <button className="btn-primary px-6 py-3 whitespace-nowrap">
-                                Subscribe
-                            </button>
-                        </div>
-                    </div>
-                </div> */}
-
-        {/* Social Links */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10">
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass p-3 rounded-full hover:bg-white/10 transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.name}
-                >
-                  <Icon size={20} />
-                </motion.a>
-              );
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+            paddingTop: '2rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1.5rem',
+          }}
+        >
+          {/* Social Icons */}
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            {actualSocialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                    <motion.a
+                        key={social.name}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        style={{
+                            width: '40px',
+                            height: '40px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: 'rgba(255,255,255,0.05)',
+                            borderRadius: '50%',
+                            color: '#fff',
+                            textDecoration: 'none'
+                        }}
+                        aria-label={social.name}
+                    >
+                        <Icon size={18} />
+                    </motion.a>
+                );
             })}
           </div>
 
-          <div className="text-sm opacity-60 text-center md:text-right">
-            <p>
-              &copy; {new Date().getFullYear()} cloudvexa.in All rights
-              reserved.
-            </p>
-            <div className="flex gap-4 mt-2 justify-center md:justify-end">
-              <Link href="#" className="hover:text-neon-cyan transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="hover:text-neon-cyan transition-colors">
-                Terms of Service
-              </Link>
-            </div>
+          <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(148,163,184,0.6)', marginBottom: '0.5rem' }}>
+                © {new Date().getFullYear()} cloudvexa.in All rights reserved.
+              </p>
+              <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'flex-end' }}>
+                {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(
+                  (item) => (
+                    <Link
+                      key={item}
+                      href="#"
+                      style={{
+                        fontSize: '0.75rem',
+                        color: 'rgba(148,163,184,0.6)',
+                        textDecoration: 'none',
+                        transition: 'color 200ms ease',
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = '#00F0FF')
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = 'rgba(148,163,184,0.6)')
+                      }
+                    >
+                      {item}
+                    </Link>
+                  )
+                )}
+              </div>
           </div>
         </div>
       </div>

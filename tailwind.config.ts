@@ -34,17 +34,23 @@ const config: Config = {
                     },
                 },
                 neon: {
-                    cyan: '#00D9FF',
-                    blue: '#00B8FF',
-                    purple: '#8B5CF6',
+                    cyan: '#00F0FF',
+                    blue: '#0070F3',
+                    violet: '#8A2BE2',
+                    purple: '#7928CA',
                 },
                 glass: {
                     light: 'rgba(255, 255, 255, 0.1)',
                     dark: 'rgba(0, 0, 0, 0.2)',
                 },
+                // Cloudvexa Re-Architecture Tokens
+                'cv-black': '#05070E',
+                'cv-subtle': '#0B0F19',
+                'cv-card': 'rgba(15, 23, 42, 0.65)',
             },
             fontFamily: {
-                sans: ['Inter', 'SF Pro Display', 'Poppins', 'system-ui', 'sans-serif'],
+                sans: ['Geist', 'Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
+                mono: ['Geist Mono', 'JetBrains Mono', 'monospace'],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -97,9 +103,11 @@ const config: Config = {
             },
             boxShadow: {
                 'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-                'glow-cyan': '0 0 20px rgba(0, 217, 255, 0.5)',
-                'glow-blue': '0 0 20px rgba(0, 184, 255, 0.5)',
-                'neon': '0 0 5px theme(colors.neon.cyan), 0 0 20px theme(colors.neon.cyan)',
+                'glow-cyan': '0 0 30px rgba(0, 240, 255, 0.4)',
+                'glow-blue': '0 0 30px rgba(0, 112, 243, 0.4)',
+                'glow-violet': '0 0 30px rgba(122, 40, 202, 0.4)',
+                'neon': '0 0 5px #00F0FF, 0 0 20px #00F0FF',
+                'neon-blue': '0 0 5px #0070F3, 0 0 20px #0070F3',
             },
         },
     },
