@@ -108,7 +108,7 @@ export default function GlobalContact() {
         fontFamily: "'Montserrat', sans-serif",
       }}
     >
-      <Script id="organization-structured-data" type="application/ld+json" strategy="beforeInteractive">
+      <Script id="organization-structured-data" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(structuredData)}
       </Script>
 
@@ -153,7 +153,7 @@ export default function GlobalContact() {
               marginBottom: '1rem',
             }}
           >
-            Let's Discuss Your Project
+            Let&apos;s Discuss Your Project
           </h2>
           <p
             style={{

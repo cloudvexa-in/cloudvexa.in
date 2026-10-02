@@ -47,7 +47,7 @@ export default function Industries() {
             Tailored Solutions for Every Sector
           </h3>
           <p className="text-lg text-[#6c757d] leading-relaxed">
-            We understand that every industry faces unique technological challenges. Our engineers build custom solutions designed specifically for your domain's regulatory and operational needs.
+            We understand that every industry faces unique technological challenges. Our engineers build custom solutions designed specifically for your domain&apos;s regulatory and operational needs.
           </p>
         </div>
 
