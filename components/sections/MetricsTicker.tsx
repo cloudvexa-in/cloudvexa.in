@@ -1,61 +1,49 @@
-import CounterCard from '@/components/ui/CounterCard';
+import { TrendingUp, Users, CheckCircle, Globe } from 'lucide-react';
 
 const metrics = [
   {
-    value: '99.99%',
-    numericValue: 9999,
-    suffix: '%',
-    label: 'Uptime Architecture',
-    color: '#00F0FF',
-    delay: 0,
+    value: '99.9%',
+    label: 'Uptime Guarantee',
+    icon: CheckCircle,
   },
   {
     value: '10+',
-    numericValue: 10,
-    suffix: '+',
-    label: 'Global Industry Verticals',
-    color: '#0070F3',
-    delay: 0.1,
+    label: 'Global Industries',
+    icon: Globe,
   },
   {
     value: '50M+',
-    numericValue: 50,
-    suffix: 'M+',
-    label: 'Daily Inference Pipelines',
-    color: '#7928CA',
-    delay: 0.2,
+    label: 'Processed Daily',
+    icon: TrendingUp,
   },
   {
-    value: '4.2x',
-    numericValue: 42,
-    suffix: 'x',
-    label: 'Average Scalability Velocity',
-    color: '#8A2BE2',
-    delay: 0.3,
+    value: '500+',
+    label: 'Happy Clients',
+    icon: Users,
   },
 ];
 
 export default function MetricsTicker() {
   return (
-    <section
-      style={{
-        padding: 'clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem)',
-        background: 'var(--bg-subtle)',
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
-      }}
-    >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {metrics.map((m) => (
-            <CounterCard key={m.label} {...m} />
-          ))}
+    <section className="relative z-30 -mt-16 pb-12 font-sans px-6">
+      <div className="max-w-[1200px] mx-auto bg-white rounded-xl shadow-xl border border-gray-100 p-8 md:p-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 divide-x divide-gray-100">
+          {metrics.map((m, idx) => {
+            const Icon = m.icon;
+            return (
+              <div key={m.label} className={`flex flex-col items-center text-center ${idx === 0 ? '' : 'pl-4 md:pl-0'}`}>
+                <div className="w-12 h-12 bg-[#f8f9fa] rounded-full flex items-center justify-center mb-4 text-[#0d6efd]">
+                  <Icon size={24} />
+                </div>
+                <div className="text-3xl md:text-4xl font-extrabold text-[#212529] tracking-tight mb-2">
+                  {m.value}
+                </div>
+                <div className="text-xs md:text-sm font-bold text-[#6c757d] uppercase tracking-wider">
+                  {m.label}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

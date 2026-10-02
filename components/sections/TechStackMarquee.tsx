@@ -19,24 +19,24 @@ const techStack = [
 
 export default function TechStackMarquee() {
   return (
-    <section className="py-12 bg-white dark:bg-[#05070E] border-b border-gray-100 dark:border-white/5 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 mb-8 text-center">
-        <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+    <section className="py-12 bg-white border-b border-gray-100 overflow-hidden font-sans">
+      <div className="max-w-[1200px] mx-auto px-6 mb-8 text-center">
+        <p className="text-sm font-bold text-[#6c757d] uppercase tracking-widest">
           Powered by Industry-Leading Technologies
         </p>
       </div>
 
       <div className="relative w-full flex overflow-hidden group py-4">
         {/* Gradient Masks for smooth fade on edges */}
-        <div className="absolute top-0 left-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-white dark:from-[#05070E] to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-white dark:from-[#05070E] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 left-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
           {/* Double the array for seamless infinite scroll */}
           {[...techStack, ...techStack].map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="flex items-center justify-center mx-8 w-12 md:w-16 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center mx-8 w-12 md:w-16 transition-all duration-300 cursor-pointer opacity-100 hover:scale-110"
               title={tech.name}
             >
               <img src={tech.src} alt={tech.name} className="w-full h-auto object-contain drop-shadow-sm" />

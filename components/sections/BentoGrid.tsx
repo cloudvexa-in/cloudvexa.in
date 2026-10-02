@@ -1,100 +1,135 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Monitor, Globe, ShieldCheck, Bot, TrendingUp, CheckCircle } from 'lucide-react';
-import { fadeUpVariant, staggerContainer } from '@/lib/motion';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Monitor, Globe, ShieldCheck, Bot, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-const services = [
-  {
-    title: 'Software Development',
-    description: 'Custom enterprise software architecture tailored to your complex business requirements, ensuring scalability and robust performance.',
-    icon: Monitor,
-  },
-  {
-    title: 'Web Development',
-    description: 'High-performance, responsive web applications built with modern frameworks to deliver seamless user experiences globally.',
-    icon: Globe,
-  },
-  {
-    title: 'QA & Testing',
-    description: 'Rigorous automated and manual testing pipelines to guarantee zero-defect releases and maintain highest quality standards.',
-    icon: CheckCircle,
-  },
-  {
-    title: 'AI Solutions',
-    description: 'Intelligent AI integrations, LLM deployments, and machine learning models to automate workflows and unlock data insights.',
-    icon: Bot,
-  },
-  {
-    title: 'Network Security',
-    description: 'Enterprise-grade zero-trust architectures, real-time threat detection, and comprehensive compliance frameworks.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Search Engine Optimization',
-    description: 'Data-driven SEO strategies and technical optimizations to dominate search rankings and drive sustainable organic traffic.',
-    icon: TrendingUp,
-  },
+const categories = [
+  { id: "software", label: "Software Development" },
+  { id: "web", label: "Web Development" },
+  { id: "ai", label: "AI & Automation" },
+  { id: "security", label: "Cybersecurity" },
 ];
 
+const servicesContent = {
+  software: {
+    title: "Custom Enterprise Software",
+    description: "We architect scalable, high-performance software systems tailored to your complex business requirements. Our engineering teams utilize agile methodologies to deliver robust applications that drive operational efficiency.",
+    features: ["Microservices Architecture", "API Development & Integration", "Legacy System Modernization", "Automated QA Pipelines"],
+    icon: Monitor,
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+  },
+  web: {
+    title: "High-Performance Web Solutions",
+    description: "Deliver seamless, responsive user experiences globally. We build dynamic web applications using modern frameworks like React and Next.js, optimized for speed, SEO, and accessibility.",
+    features: ["Single Page Applications", "Progressive Web Apps", "E-commerce Platforms", "Content Management Systems"],
+    icon: Globe,
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+  },
+  ai: {
+    title: "Intelligent AI Integrations",
+    description: "Unlock data insights and automate workflows with our advanced AI solutions. From custom LLM deployments to predictive machine learning models, we bring smart automation to your enterprise.",
+    features: ["Generative AI Models", "Chatbot & Agent Development", "Predictive Analytics", "Natural Language Processing"],
+    icon: Bot,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+  },
+  security: {
+    title: "Enterprise-Grade Security",
+    description: "Protect your critical assets with our comprehensive zero-trust architectures. We implement real-time threat detection, secure cloud infrastructure, and ensure continuous compliance.",
+    features: ["Zero-Trust Architecture", "Vulnerability Assessments", "Real-Time Threat Monitoring", "Compliance & Governance"],
+    icon: ShieldCheck,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+  }
+};
+
 export default function ServicesGrid() {
+  const [activeTab, setActiveTab] = useState("software");
+
   return (
-    <section className="py-24 px-6 md:px-12 bg-gray-50 dark:bg-[#020408] transition-colors duration-300">
+    <section className="py-24 px-6 md:px-12 bg-white transition-colors duration-300 font-sans border-b border-gray-100">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-6"
-          >
-            Core Engineering Services
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
-          >
-            We provide end-to-end technology solutions designed for scale, security, and performance. Our specialized teams architect systems that drive real business transformation.
-          </motion.p>
+        <div className="max-w-3xl mb-12">
+          <h2 className="text-sm font-bold text-[#0d6efd] uppercase tracking-widest mb-3">Our Core Services</h2>
+          <h3 className="text-3xl md:text-5xl font-extrabold text-[#212529] tracking-tight mb-6 leading-tight">
+            Comprehensive Technology Solutions for the Modern Enterprise
+          </h3>
         </div>
 
-        {/* Grid */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-        >
-          {services.map((service, idx) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                variants={fadeUpVariant}
-                className="group relative bg-white dark:bg-[#0B0F19] p-8 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        {/* Tabbed Interface */}
+        <div className="flex flex-col lg:flex-row gap-12">
+          
+          {/* Tabs Sidebar */}
+          <div className="w-full lg:w-1/4 flex flex-col gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`text-left px-6 py-4 rounded-lg font-bold text-lg transition-all border-l-4 ${
+                  activeTab === cat.id 
+                    ? "bg-[#f8f9fa] border-[#0d6efd] text-[#212529] shadow-sm" 
+                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                }`}
               >
-                <div className="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon size={24} className="text-blue-600 dark:text-cyan-400" />
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Content Area */}
+          <div className="w-full lg:w-3/4 bg-[#f8f9fa] rounded-2xl p-8 lg:p-12 border border-gray-100 shadow-sm relative overflow-hidden min-h-[500px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col md:flex-row gap-12 items-center h-full"
+              >
+                {/* Text Content */}
+                <div className="w-full md:w-1/2">
+                  <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6 shadow-sm border border-gray-100 text-[#0d6efd]">
+                    {(() => {
+                      const Icon = servicesContent[activeTab as keyof typeof servicesContent].icon;
+                      return <Icon size={28} />;
+                    })()}
+                  </div>
+                  <h4 className="text-2xl md:text-3xl font-bold text-[#212529] mb-4">
+                    {servicesContent[activeTab as keyof typeof servicesContent].title}
+                  </h4>
+                  <p className="text-[#6c757d] leading-relaxed mb-8">
+                    {servicesContent[activeTab as keyof typeof servicesContent].description}
+                  </p>
+                  
+                  <ul className="space-y-3 mb-8">
+                    {servicesContent[activeTab as keyof typeof servicesContent].features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                        <CheckCircle size={18} className="text-[#0d6efd]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link href={`/products#${activeTab}`} className="inline-flex items-center gap-2 text-[#0d6efd] font-bold hover:text-[#0b5ed7] transition-colors group">
+                    Learn more about this service <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                {/* Subtle bottom accent line */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+
+                {/* Image Content */}
+                <div className="w-full md:w-1/2 h-64 md:h-full min-h-[300px] rounded-xl overflow-hidden relative">
+                   <div 
+                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                     style={{ backgroundImage: `url(${servicesContent[activeTab as keyof typeof servicesContent].image})` }}
+                   />
+                </div>
               </motion.div>
-            );
-          })}
-        </motion.div>
+            </AnimatePresence>
+          </div>
+
+        </div>
 
       </div>
     </section>
